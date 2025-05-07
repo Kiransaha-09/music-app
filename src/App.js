@@ -1,7 +1,5 @@
 import "./App.css";
 
-// import "../public/sounds.wav"
-
 function App() {
   const notes = [
     { key: "A", label: "CLAP", sound: "/sounds/A.wav" },
