@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useEffect } from "react";
 
 function App() {
   const notes = [
@@ -17,6 +18,23 @@ function App() {
     const audio = new Audio(sound);
     audio.play();
   };
+
+  const handleKeyPress = (event) => {
+    const keypress = notes.find(
+      (note) => note.key.toUpperCase() === event.key.toUpperCase()
+    );
+    if (keypress) {
+      start(keypress.sound);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
 
   return (
     <div className="App">
